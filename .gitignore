@@ -1,0 +1,76 @@
+### Secretos y configuración local (NUNCA subir) ###
+# Claves de Cloudinary, contraseñas, tokens
+.env
+.env.*
+!.env.example
+*.env
+application-local.properties
+application-local.yml
+application-secret*.properties
+src/main/resources/application-prod.properties
+src/main/resources/application-prod.yml
+
+# Certificados y claves privadas
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.truststore
+*.crt
+id_rsa*
+credentials*.json
+service-account*.json
+
+### Logs, volcados y bases locales ###
+*.log
+logs/
+*.hprof
+hs_err_pid*
+replay_pid*
+*.db
+*.mv.db
+*.trace.db
+
+### Maven / compilación ###
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+out/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+# Incluye workspace.xml, que puede guardar variables de entorno de las configuraciones de ejecución
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### Sistema operativo ###
+.DS_Store
+Thumbs.db
+desktop.ini
