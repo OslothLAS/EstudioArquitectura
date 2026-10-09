@@ -1,0 +1,13 @@
+target/
+.git/
+.idea/
+.vscode/
+.mvn/
+mvnw
+mvnw.cmd
+*.iml
+*.log
+HELP.md
+# Los secretos nunca van dentro de la imagen: se pasan como variables de entorno
+.env
+.env.*
