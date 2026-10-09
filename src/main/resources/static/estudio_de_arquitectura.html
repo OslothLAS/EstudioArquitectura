@@ -124,7 +124,7 @@
     <section id="inicio" class="relative h-screen flex items-center justify-center">
         <!-- Background Image -->
         <div class="absolute inset-0 z-0">
-            <img data-seccion="portada" data-indice="0" src="img/portada.jpg" alt="Arquitectura moderna" class="w-full h-full object-cover" />
+            <img src="img/portada.jpg" alt="Arquitectura moderna" class="w-full h-full object-cover" />
             <div class="absolute inset-0 hero-overlay"></div>
         </div>
         
@@ -168,7 +168,7 @@
                         <p>
                             Porque proyectar no es solamente hacer planos: es crear un espacio que se adapte a vos, te represente y disfrutes todos los días.
                         </p>
-                        <p id="mision" class="text-lg font-heading text-primary border-l-4 border-secondary pl-4 italic mt-8"></p>
+                        <p id="mision" class="text-lg font-heading text-primary border-l-4 border-secondary pl-4 italic mt-8">"Nuestra misión es crear un hogar que se sienta verdaderamente tuyo y donde encuentres paz cada vez que llegás."</p>
                         <a href="#contacto" class="inline-block bg-secondary text-white font-semibold py-4 px-10 rounded-none hover:bg-yellow-600 transition-colors duration-300 text-sm tracking-widest uppercase mt-4">
                             Contanos qué tenés en mente
                         </a>
@@ -177,8 +177,8 @@
 
                 <!-- Image Collage -->
                 <div class="relative h-full min-h-[500px]">
-                    <img data-seccion="nosotros" data-indice="0" src="img/nosotros-interior.jpg" alt="Diseño de interiores" class="absolute top-0 right-0 w-4/5 h-4/5 object-cover rounded shadow-2xl z-10">
-                    <img data-seccion="nosotros" data-indice="1" src="img/nosotros-planos.jpg" alt="Planos de arquitectura" class="absolute bottom-0 left-0 w-3/5 h-3/5 object-cover rounded shadow-xl border-8 border-white z-20">
+                    <img src="img/nosotros-interior.jpg" alt="Diseño de interiores" class="absolute top-0 right-0 w-4/5 h-4/5 object-cover rounded shadow-2xl z-10">
+                    <img src="img/nosotros-planos.jpg" alt="Planos de arquitectura" class="absolute bottom-0 left-0 w-3/5 h-3/5 object-cover rounded shadow-xl border-8 border-white z-20">
                 </div>
             </div>
         </div>
@@ -283,7 +283,7 @@
             </div>
 
             <div id="proceso-grid" class="flex flex-wrap items-start justify-center gap-8">
-                <p class="text-textLight w-full text-center">Cargando etapas del proceso...</p>
+                
             </div>
         </div>
     </section>
@@ -418,8 +418,59 @@
             if(form) form.reset();
         }
 
-        // Datos dinámicos desde la API (ArquitecturaController)
-        const API_URL = '/api/arquitectura';
+        // Etapas del proceso. Para cambiar un texto, editalo acá.
+        // Cada imagen está en img/proceso/; si una etapa no tiene, poné imagen: null.
+        const ETAPAS = [
+            {
+                nombre: 'Plan de necesidades',
+                subtitulo: 'Conocemos tu forma de vivir.',
+                descripcion: 'Conversamos sobre tus necesidades, gustos, hábitos y expectativas, analizamos el terreno o espacio existente y nos adaptamos a tu presupuesto.',
+                beneficio: 'Nos permite comprender qué necesitás realmente y establecer una base clara antes de comenzar a diseñar.',
+                imagen: 'img/proceso/plan-de-necesidades.jpg'
+            },
+            {
+                nombre: 'Croquis',
+                subtitulo: 'Le damos forma a las primeras ideas.',
+                descripcion: 'Exploramos distintas posibilidades de distribución y relación entre los espacios.',
+                beneficio: 'Podés visualizar las primeras propuestas, comparar alternativas y participar desde el comienzo en las decisiones del proyecto.',
+                imagen: 'img/proceso/croquis.jpg'
+            },
+            {
+                nombre: 'Anteproyecto',
+                subtitulo: 'Definimos cómo será tu espacio.',
+                descripcion: 'Desarrollamos la propuesta elegida, trabajando la distribución, las dimensiones, la estética y los materiales.',
+                beneficio: 'Te permite comprender cómo se verá y cómo funcionará el espacio antes de avanzar a la documentación definitiva.',
+                imagen: 'img/proceso/anteproyecto.jpg'
+            },
+            {
+                nombre: 'Proyecto',
+                subtitulo: 'Convertimos la idea en una propuesta definida.',
+                descripcion: 'Ajustamos y definimos los ambientes, sus medidas, materiales y características principales.',
+                beneficio: 'Llegás a una propuesta final clara, revisada y adaptada a tus necesidades, evitando decisiones improvisadas durante la obra.',
+                imagen: 'img/proceso/proyecto.jpg'
+            },
+            {
+                nombre: 'Proyecto ejecutivo',
+                subtitulo: 'Preparamos toda la información para construir.',
+                descripcion: 'Elaboramos los planos y detalles necesarios para ejecutar correctamente el proyecto.',
+                beneficio: 'Reduce errores, dudas, cambios inesperados y gastos innecesarios durante la construcción. Además, permite pedir presupuestos más claros y comparables.',
+                imagen: 'img/proceso/proyecto-ejecutivo.jpg'
+            },
+            {
+                nombre: 'Dirección de obra',
+                subtitulo: 'Acompañamos la materialización del proyecto.',
+                descripcion: 'Supervisamos el avance de la obra, verificamos que se respete lo proyectado y resolvemos consultas durante la ejecución.',
+                beneficio: 'Tenés acompañamiento profesional durante la construcción y mayor tranquilidad de que el resultado final se corresponda con lo que planificamos juntos.',
+                imagen: 'img/proceso/direccion-de-obra.jpg'
+            },
+            {
+                nombre: 'Entrega final',
+                subtitulo: 'Revisamos el resultado y cerramos el proceso.',
+                descripcion: 'Realizamos una revisión final, hacemos los ajustes necesarios y te acompañamos también después de la obra.',
+                beneficio: 'Contás con una instancia de revisión y ajustes, además de acompañamiento post obra.',
+                imagen: 'img/proceso/entrega-final.jpg'
+            }
+        ];
 
         // Escapa texto para insertarlo de forma segura dentro del HTML
         function escapeHtml(texto) {
@@ -428,18 +479,16 @@
             return div.innerHTML;
         }
 
-        // Imagen o GIF de la etapa (carpeta estudio/proceso en Cloudinary). Si no hay, no se muestra nada.
+        // Imagen o GIF de la etapa. Si no hay, no se muestra nada.
         function crearImagenEtapa(etapa) {
-            const imagen = etapa.imagen;
-            if (!imagen?.url) return '';
-            const medidas = imagen.ancho && imagen.alto ? `width="${imagen.ancho}" height="${imagen.alto}"` : '';
-            return `<img src="${escapeHtml(imagen.url)}" alt="${escapeHtml(imagen.alt || etapa.nombre)}" ${medidas}
+            if (!etapa.imagen) return '';
+            return `<img src="${escapeHtml(etapa.imagen)}" alt="${escapeHtml(etapa.nombre)}"
                          loading="lazy" class="w-full h-auto rounded shadow-sm mb-4">`;
         }
 
         // Cada etapa muestra nombre, subtítulo y descripción; al tocarla se despliegan la imagen y el beneficio
-        function crearTarjetaEtapa(etapa) {
-            const numero = String(etapa.numero).padStart(2, '0');
+        function crearTarjetaEtapa(etapa, indice) {
+            const numero = String(indice + 1).padStart(2, '0');
             const idDetalle = `etapa-detalle-${numero}`;
             return `
                 <div class="etapa relative bg-bgBeige rounded overflow-hidden group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.334rem)]">
@@ -476,56 +525,14 @@
             tarjeta.querySelector('.etapa-detalle').inert = !abierta;
         }
 
-        async function cargarProceso() {
+        function cargarProceso() {
             const grid = document.getElementById('proceso-grid');
-            try {
-                const respuesta = await fetch(`${API_URL}/proceso`);
-                if (!respuesta.ok) throw new Error(`HTTP ${respuesta.status}`);
-                const etapas = await respuesta.json();
-                grid.innerHTML = etapas.map(crearTarjetaEtapa).join('');
-                grid.querySelectorAll('.etapa-boton').forEach(boton =>
-                    boton.addEventListener('click', () => alternarEtapa(boton)));
-            } catch (error) {
-                console.error('Error al cargar el proceso:', error);
-                grid.innerHTML = '<p class="text-textLight w-full text-center">No se pudieron cargar las etapas del proceso. Intentá nuevamente más tarde.</p>';
-            }
-        }
-
-        async function cargarMision() {
-            const mision = document.getElementById('mision');
-            try {
-                const respuesta = await fetch(`${API_URL}/mision`);
-                if (!respuesta.ok) throw new Error(`HTTP ${respuesta.status}`);
-                mision.textContent = `"${await respuesta.text()}"`;
-            } catch (error) {
-                console.error('Error al cargar la misión:', error);
-                mision.classList.add('hidden');
-            }
-        }
-
-        // Reemplaza cada <img data-seccion="..." data-indice="..."> por la imagen de Cloudinary
-        // en esa posición. Si la sección todavía no tiene imágenes, queda la local de /img.
-        async function cargarImagenes() {
-            try {
-                const respuesta = await fetch('/api/imagenes');
-                if (!respuesta.ok) throw new Error(`HTTP ${respuesta.status}`);
-                const secciones = await respuesta.json();
-
-                document.querySelectorAll('img[data-seccion]').forEach(img => {
-                    const imagenes = secciones[img.dataset.seccion] ?? [];
-                    const imagen = imagenes[Number(img.dataset.indice ?? 0)];
-                    if (!imagen) return;
-                    img.src = imagen.url;
-                    if (imagen.alt) img.alt = imagen.alt;
-                });
-            } catch (error) {
-                console.error('Error al cargar las imágenes:', error);
-            }
+            grid.innerHTML = ETAPAS.map(crearTarjetaEtapa).join('');
+            grid.querySelectorAll('.etapa-boton').forEach(boton =>
+                boton.addEventListener('click', () => alternarEtapa(boton)));
         }
 
         cargarProceso();
-        cargarMision();
-        cargarImagenes();
     </script>
 </body>
 </html>

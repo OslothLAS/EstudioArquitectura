@@ -1,0 +1,7 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "outputDirectory": "src/main/resources/static",
+  "rewrites": [
+    { "source": "/", "destination": "/estudio_de_arquitectura.html" }
+  ]
+}
