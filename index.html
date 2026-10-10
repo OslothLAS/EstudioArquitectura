@@ -54,6 +54,10 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
         }
+        /* Foto de servicio: si el archivo todavía no existe, se ve un recuadro vacío */
+        .servicio-foto .foto-vacia { display: none; }
+        .servicio-foto.sin-foto img { display: none; }
+        .servicio-foto.sin-foto .foto-vacia { display: flex; }
         /* Etapas del proceso contraíbles: el detalle se despliega animando su alto */
         .etapa-detalle {
             display: grid;
@@ -172,8 +176,12 @@
         </div>
     </section>
 
-    <section id="quien-lidera" class="py-16 md:py-24 bg-bgBeige">
+    <section id="quien-lidera" class="hidden relative scroll-mt-20 py-16 md:py-24 bg-bgBeige">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <button type="button" id="cerrar-quien-lidera" aria-label="Cerrar"
+                    class="absolute top-6 right-4 sm:right-6 w-10 h-10 rounded-full border border-gray-300 text-primary hover:bg-primary hover:text-white transition-colors flex items-center justify-center">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16">
                 <div>
                     <span class="text-secondary font-semibold tracking-wider uppercase text-sm">Quién lidera el estudio</span>
@@ -227,7 +235,20 @@
                         </span>
                     </button>
                     <div id="servicio-detalle-1" class="etapa-detalle" inert>
-                        <div><p class="pl-10 pr-2 pb-4 text-sm text-white/75 leading-relaxed">Proyecto y construcción de espacios pensados para tu forma de vivir.</p></div>
+                        <div>
+                            <div class="pl-10 pr-2 pb-5">
+                                <p class="text-sm text-white/75 leading-relaxed mb-4">Proyecto y construcción de espacios pensados para tu forma de vivir.</p>
+                                <!-- Para mostrar la foto, guardala como img/servicios/viviendas.jpg -->
+                                <div class="servicio-foto">
+                                    <img src="img/servicios/viviendas.jpg" alt="Viviendas" class="w-full aspect-[4/3] object-cover rounded-lg border border-white/20"
+                                         onerror="this.parentElement.classList.add('sin-foto')">
+                                    <div class="foto-vacia aspect-[4/3] rounded-lg border border-dashed border-white/30 bg-white/5 flex-col items-center justify-center gap-2 text-white/50 text-xs uppercase tracking-wider">
+                                        <i class="fas fa-camera text-2xl" aria-hidden="true"></i>
+                                        Foto próximamente
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </li>
                 <li class="etapa border-b border-white/15">
@@ -241,7 +262,20 @@
                         </span>
                     </button>
                     <div id="servicio-detalle-2" class="etapa-detalle" inert>
-                        <div><p class="pl-10 pr-2 pb-4 text-sm text-white/75 leading-relaxed">Soluciones funcionales y resistentes adaptadas a cada actividad productiva.</p></div>
+                        <div>
+                            <div class="pl-10 pr-2 pb-5">
+                                <p class="text-sm text-white/75 leading-relaxed mb-4">Soluciones funcionales y resistentes adaptadas a cada actividad productiva.</p>
+                                <!-- Para mostrar la foto, guardala como img/servicios/obras-rurales.jpg -->
+                                <div class="servicio-foto">
+                                    <img src="img/servicios/obras-rurales.jpg" alt="Obras rurales" class="w-full aspect-[4/3] object-cover rounded-lg border border-white/20"
+                                         onerror="this.parentElement.classList.add('sin-foto')">
+                                    <div class="foto-vacia aspect-[4/3] rounded-lg border border-dashed border-white/30 bg-white/5 flex-col items-center justify-center gap-2 text-white/50 text-xs uppercase tracking-wider">
+                                        <i class="fas fa-camera text-2xl" aria-hidden="true"></i>
+                                        Foto próximamente
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </li>
                 <li class="etapa border-b border-white/15">
@@ -255,7 +289,20 @@
                         </span>
                     </button>
                     <div id="servicio-detalle-3" class="etapa-detalle" inert>
-                        <div><p class="pl-10 pr-2 pb-4 text-sm text-white/75 leading-relaxed">Diseño y construcción de espacios eficientes para guardado, trabajo o producción.</p></div>
+                        <div>
+                            <div class="pl-10 pr-2 pb-5">
+                                <p class="text-sm text-white/75 leading-relaxed mb-4">Diseño y construcción de espacios eficientes para guardado, trabajo o producción.</p>
+                                <!-- Para mostrar la foto, guardala como img/servicios/galpones.jpg -->
+                                <div class="servicio-foto">
+                                    <img src="img/servicios/galpones.jpg" alt="Galpones" class="w-full aspect-[4/3] object-cover rounded-lg border border-white/20"
+                                         onerror="this.parentElement.classList.add('sin-foto')">
+                                    <div class="foto-vacia aspect-[4/3] rounded-lg border border-dashed border-white/30 bg-white/5 flex-col items-center justify-center gap-2 text-white/50 text-xs uppercase tracking-wider">
+                                        <i class="fas fa-camera text-2xl" aria-hidden="true"></i>
+                                        Foto próximamente
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </li>
                 <li class="etapa border-b border-white/15">
@@ -269,7 +316,20 @@
                         </span>
                     </button>
                     <div id="servicio-detalle-4" class="etapa-detalle" inert>
-                        <div><p class="pl-10 pr-2 pb-4 text-sm text-white/75 leading-relaxed">Proyectos adaptados a las necesidades operativas y productivas de cada empresa.</p></div>
+                        <div>
+                            <div class="pl-10 pr-2 pb-5">
+                                <p class="text-sm text-white/75 leading-relaxed mb-4">Proyectos adaptados a las necesidades operativas y productivas de cada empresa.</p>
+                                <!-- Para mostrar la foto, guardala como img/servicios/naves-industriales.jpg -->
+                                <div class="servicio-foto">
+                                    <img src="img/servicios/naves-industriales.jpg" alt="Naves industriales" class="w-full aspect-[4/3] object-cover rounded-lg border border-white/20"
+                                         onerror="this.parentElement.classList.add('sin-foto')">
+                                    <div class="foto-vacia aspect-[4/3] rounded-lg border border-dashed border-white/30 bg-white/5 flex-col items-center justify-center gap-2 text-white/50 text-xs uppercase tracking-wider">
+                                        <i class="fas fa-camera text-2xl" aria-hidden="true"></i>
+                                        Foto próximamente
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </li>
                 <li class="etapa border-b border-white/15">
@@ -473,6 +533,23 @@
                 menu.classList.add('hidden');
             });
         });
+
+        // "Quién lidera el estudio" solo aparece al tocarlo en el menú
+        const quienLidera = document.getElementById('quien-lidera');
+        function mostrarQuienLidera() {
+            quienLidera.classList.remove('hidden');
+            quienLidera.scrollIntoView({ behavior: 'smooth' });
+        }
+        document.querySelectorAll('a[href="#quien-lidera"]').forEach(link =>
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                mostrarQuienLidera();
+            }));
+        document.getElementById('cerrar-quien-lidera').addEventListener('click', () => {
+            quienLidera.classList.add('hidden');
+            document.getElementById('servicios').scrollIntoView();
+        });
+        if (location.hash === '#quien-lidera') mostrarQuienLidera();
 
         // Mensaje simulado en lugar de alert()
         function showMessage() {
