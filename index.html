@@ -45,21 +45,6 @@
         .hero-overlay {
             background: linear-gradient(to right, rgba(26, 37, 47, 0.8), rgba(26, 37, 47, 0.4));
         }
-        .number-watermark {
-            font-size: 8rem;
-            line-height: 1;
-            font-weight: 800;
-            color: rgba(212, 175, 55, 0.08); /* Dorado muy transparente */
-            position: absolute;
-            top: -20px;
-            right: -10px;
-            z-index: 0;
-            user-select: none;
-        }
-        .card-content {
-            position: relative;
-            z-index: 1;
-        }
         /* Etapas del proceso contraíbles: el detalle se despliega animando su alto */
         .etapa-detalle {
             display: grid;
@@ -134,9 +119,6 @@
             <h1 class="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-white mb-6 leading-tight">
                 Diseñamos espacios <br/><span class="font-light italic text-gray-200">pensados para vos</span>
             </h1>
-            <p class="mt-4 text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-light mb-10">
-                Transformamos tus ideas en un proyecto funcional, posible y con identidad propia.
-            </p>
             <a href="#nosotros" class="inline-block bg-secondary text-white font-semibold py-4 px-10 rounded-none hover:bg-yellow-600 transition-colors duration-300 text-sm tracking-widest uppercase">
                 Descubrí cómo
             </a>
@@ -168,7 +150,7 @@
                         <p>
                             Porque proyectar no es solamente hacer planos: es crear un espacio que se adapte a vos, te represente y disfrutes todos los días.
                         </p>
-                        <p id="mision" class="text-lg font-heading text-primary border-l-4 border-secondary pl-4 italic mt-8">"Nuestra misión es crear un hogar que se sienta verdaderamente tuyo y donde encuentres paz cada vez que llegás."</p>
+                        <p id="mision" class="text-lg font-heading text-primary border-l-4 border-secondary pl-4 italic mt-8">"Dale forma a tu próximo proyecto. Te acompañamos desde la primera idea hasta la obra."</p>
                         <a href="#contacto" class="inline-block bg-secondary text-white font-semibold py-4 px-10 rounded-none hover:bg-yellow-600 transition-colors duration-300 text-sm tracking-widest uppercase mt-4">
                             Contanos qué tenés en mente
                         </a>
@@ -184,107 +166,87 @@
         </div>
     </section>
 
-    <section id="servicios" class="py-24 bg-bgBeige">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
+    <section id="servicios" class="py-14 md:py-24 bg-bgBeige">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-6 md:mb-12">
                 <span class="text-secondary font-semibold tracking-wider uppercase text-sm">Nuestros Servicios</span>
-                <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary mt-2">Proyecto y Dirección de Obra</h2>
-                <div class="w-16 h-1 bg-secondary mx-auto mt-6"></div>
-                <p class="mt-6 text-textLight max-w-2xl mx-auto">
-                    Brindamos un servicio integral para que el desarrollo de tu hogar sea una experiencia disfrutable, predecible y segura.
-                </p>
+                <h2 class="text-2xl md:text-4xl font-heading font-bold text-primary mt-2">Proyecto y Dirección de Obra</h2>
+                <div class="w-16 h-1 bg-secondary mx-auto mt-4 md:mt-6"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Service 1 -->
-                <div class="bg-white p-8 rounded shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100">
-                    <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mb-6 text-primary">
-                        <i class="fas fa-comments text-xl"></i>
+            <ul class="grid grid-cols-1 md:grid-cols-2 md:gap-x-12">
+                <li class="flex items-start gap-4 py-3 border-b border-gray-200">
+                    <i class="fas fa-comments text-secondary text-base w-5 text-center mt-1 shrink-0" aria-hidden="true"></i>
+                    <div>
+                        <h3 class="font-heading font-semibold text-primary text-[15px] leading-snug">Planificación y escucha</h3>
+                        <p class="text-[13px] text-textLight leading-snug">Tus necesidades e ideas como punto de partida.</p>
                     </div>
-                    <h3 class="font-heading font-bold text-lg mb-3">Planificación y Escucha</h3>
-                    <p class="text-sm text-textLight">Relevamiento profundo de tus necesidades, prioridades e ideas para asentar bases sólidas.</p>
-                </div>
-                
-                <!-- Service 2 -->
-                <div class="bg-white p-8 rounded shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100">
-                    <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mb-6 text-primary">
-                        <i class="fas fa-pencil-ruler text-xl"></i>
+                </li>
+                <li class="flex items-start gap-4 py-3 border-b border-gray-200">
+                    <i class="fas fa-pencil-ruler text-secondary text-base w-5 text-center mt-1 shrink-0" aria-hidden="true"></i>
+                    <div>
+                        <h3 class="font-heading font-semibold text-primary text-[15px] leading-snug">Croquis y anteproyecto</h3>
+                        <p class="text-[13px] text-textLight leading-snug">Las primeras ideas toman forma.</p>
                     </div>
-                    <h3 class="font-heading font-bold text-lg mb-3">Croquis y Anteproyecto</h3>
-                    <p class="text-sm text-textLight">Damos forma a las primeras ideas buscando la propuesta que mejor refleje tu personalidad.</p>
-                </div>
-
-                <!-- Service 3 -->
-                <div class="bg-white p-8 rounded shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100">
-                    <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mb-6 text-primary">
-                        <i class="fas fa-file-contract text-xl"></i>
+                </li>
+                <li class="flex items-start gap-4 py-3 border-b border-gray-200">
+                    <i class="fas fa-file-contract text-secondary text-base w-5 text-center mt-1 shrink-0" aria-hidden="true"></i>
+                    <div>
+                        <h3 class="font-heading font-semibold text-primary text-[15px] leading-snug">Documentación</h3>
+                        <p class="text-[13px] text-textLight leading-snug">Planos y documentación técnica para construir.</p>
                     </div>
-                    <h3 class="font-heading font-bold text-lg mb-3">Documentación</h3>
-                    <p class="text-sm text-textLight">Elaboración completa de planos y toda la documentación técnica necesaria para construir.</p>
-                </div>
-
-                <!-- Service 4 -->
-                <div class="bg-white p-8 rounded shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100">
-                    <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mb-6 text-primary">
-                        <i class="fas fa-leaf text-xl"></i>
+                </li>
+                <li class="flex items-start gap-4 py-3 border-b border-gray-200">
+                    <i class="fas fa-leaf text-secondary text-base w-5 text-center mt-1 shrink-0" aria-hidden="true"></i>
+                    <div>
+                        <h3 class="font-heading font-semibold text-primary text-[15px] leading-snug">Optimización</h3>
+                        <p class="text-[13px] text-textLight leading-snug">Diseño sustentable: luz, ventilación y asoleamiento.</p>
                     </div>
-                    <h3 class="font-heading font-bold text-lg mb-3">Optimización</h3>
-                    <p class="text-sm text-textLight">Diseño sustentable, aprovechando materiales, asoleamiento, luz y ventilación natural.</p>
-                </div>
-
-                <!-- Service 5 -->
-                <div class="bg-white p-8 rounded shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100">
-                    <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mb-6 text-primary">
-                        <i class="fas fa-couch text-xl"></i>
+                </li>
+                <li class="flex items-start gap-4 py-3 border-b border-gray-200">
+                    <i class="fas fa-couch text-secondary text-base w-5 text-center mt-1 shrink-0" aria-hidden="true"></i>
+                    <div>
+                        <h3 class="font-heading font-semibold text-primary text-[15px] leading-snug">Diseño de interiores</h3>
+                        <p class="text-[13px] text-textLight leading-snug">Materiales, colores y texturas.</p>
                     </div>
-                    <h3 class="font-heading font-bold text-lg mb-3">Diseño de Interiores</h3>
-                    <p class="text-sm text-textLight">Elección de materiales, colores y texturas según las sensaciones que quieras generar.</p>
-                </div>
-
-                <!-- Service 6 -->
-                <div class="bg-white p-8 rounded shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100">
-                    <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mb-6 text-primary">
-                        <i class="fas fa-calculator text-xl"></i>
+                </li>
+                <li class="flex items-start gap-4 py-3 border-b border-gray-200">
+                    <i class="fas fa-calculator text-secondary text-base w-5 text-center mt-1 shrink-0" aria-hidden="true"></i>
+                    <div>
+                        <h3 class="font-heading font-semibold text-primary text-[15px] leading-snug">Costos y asesoría</h3>
+                        <p class="text-[13px] text-textLight leading-snug">Estimación de costos y asesoramiento continuo.</p>
                     </div>
-                    <h3 class="font-heading font-bold text-lg mb-3">Costos y Asesoría</h3>
-                    <p class="text-sm text-textLight">Estimación precisa de costos de obra y asesoramiento financiero continuo.</p>
-                </div>
-
-                <!-- Service 7 -->
-                <div class="bg-white p-8 rounded shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100">
-                    <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mb-6 text-primary">
-                        <i class="fas fa-hard-hat text-xl"></i>
+                </li>
+                <li class="flex items-start gap-4 py-3 border-b border-gray-200">
+                    <i class="fas fa-hard-hat text-secondary text-base w-5 text-center mt-1 shrink-0" aria-hidden="true"></i>
+                    <div>
+                        <h3 class="font-heading font-semibold text-primary text-[15px] leading-snug">Dirección de obra</h3>
+                        <p class="text-[13px] text-textLight leading-snug">Seguimiento de cada detalle en la obra.</p>
                     </div>
-                    <h3 class="font-heading font-bold text-lg mb-3">Dirección de Obra</h3>
-                    <p class="text-sm text-textLight">Seguimiento exhaustivo asegurando que cada detalle se ejecute según lo proyectado.</p>
-                </div>
-
-                <!-- Service 8 -->
-                <div class="bg-white p-8 rounded shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100">
-                    <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mb-6 text-primary">
-                        <i class="fas fa-users-cog text-xl"></i>
+                </li>
+                <li class="flex items-start gap-4 py-3 border-b border-gray-200">
+                    <i class="fas fa-users-cog text-secondary text-base w-5 text-center mt-1 shrink-0" aria-hidden="true"></i>
+                    <div>
+                        <h3 class="font-heading font-semibold text-primary text-[15px] leading-snug">Equipo capacitado</h3>
+                        <p class="text-[13px] text-textLight leading-snug">Personal calificado, asegurado y de confianza.</p>
                     </div>
-                    <h3 class="font-heading font-bold text-lg mb-3">Equipo Capacitado</h3>
-                    <p class="text-sm text-textLight">Contamos con personal altamente calificado, asegurado y de absoluta confianza.</p>
-                </div>
-            </div>
+                </li>
+            </ul>
         </div>
     </section>
 
-    <section id="proceso" class="py-24 bg-white">
+    <section id="proceso" class="py-14 md:py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-16">
+            <div class="mb-6 md:mb-12 max-w-3xl mx-auto">
                 <span class="text-secondary font-semibold tracking-wider uppercase text-sm">Paso a paso</span>
-                <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary mt-2">El proceso de tu proyecto</h2>
-                <div class="w-16 h-1 bg-secondary mt-6 mb-6"></div>
-                <p class="text-textLight max-w-3xl">
+                <h2 class="text-2xl md:text-4xl font-heading font-bold text-primary mt-2">El proceso de tu proyecto</h2>
+                <div class="w-16 h-1 bg-secondary mt-4 md:mt-6 mb-4 md:mb-6"></div>
+                <p class="hidden md:block text-textLight">
                     Cada proyecto comienza con una idea y se transforma, paso a paso, en un espacio pensado para vos. Te acompañamos durante todo el proceso, desde las primeras conversaciones hasta la materialización de la obra.
                 </p>
             </div>
 
-            <div id="proceso-grid" class="flex flex-wrap items-start justify-center gap-8">
-                
-            </div>
+            <ol id="proceso-grid" class="max-w-3xl mx-auto border-t border-gray-200"></ol>
         </div>
     </section>
 
@@ -486,35 +448,35 @@
                          loading="lazy" class="w-full h-auto rounded shadow-sm mb-4">`;
         }
 
-        // Cada etapa muestra nombre, subtítulo y descripción; al tocarla se despliegan la imagen y el beneficio
+        // Cada etapa muestra solo su número y nombre; "Ver más" despliega subtítulo, descripción, imagen y beneficio
         function crearTarjetaEtapa(etapa, indice) {
-            const numero = String(indice + 1).padStart(2, '0');
+            const numero = indice + 1;
             const idDetalle = `etapa-detalle-${numero}`;
             return `
-                <div class="etapa relative bg-bgBeige rounded overflow-hidden group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.334rem)]">
-                    <div class="number-watermark">${numero}</div>
+                <li class="etapa border-b border-gray-200">
                     <button type="button" aria-expanded="false" aria-controls="${idDetalle}"
-                            class="etapa-boton card-content w-full text-left p-8 pb-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary">
-                        <h3 class="font-heading font-bold text-xl text-primary mb-2">${escapeHtml(etapa.nombre)}</h3>
-                        <p class="text-secondary font-medium text-sm mb-4 italic">${escapeHtml(etapa.subtitulo)}</p>
-                        <p class="text-textLight text-sm mb-4">${escapeHtml(etapa.descripcion)}</p>
-                        <span class="inline-flex items-center gap-2 px-5 py-2.5 border-2 border-secondary bg-secondary/10 text-xs font-bold text-primary uppercase tracking-wider shadow-sm group-hover:bg-secondary group-hover:text-white group-hover:shadow-md transition-all duration-300">
+                            class="etapa-boton group w-full flex items-center gap-4 py-3 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary">
+                        <span class="w-9 h-9 shrink-0 rounded-full bg-secondary text-white font-heading font-bold text-base flex items-center justify-center" aria-hidden="true">${numero}</span>
+                        <h3 class="flex-1 font-heading font-semibold text-base md:text-lg text-primary">${escapeHtml(etapa.nombre)}</h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 border border-secondary text-[11px] font-bold text-primary uppercase tracking-wider group-hover:bg-secondary group-hover:text-white transition-colors duration-300">
                             <span class="etapa-texto">Ver más</span>
                             <i class="etapa-icono fas fa-chevron-down" aria-hidden="true"></i>
                         </span>
                     </button>
-                    <div id="${idDetalle}" class="etapa-detalle card-content" inert>
+                    <div id="${idDetalle}" class="etapa-detalle" inert>
                         <div>
-                            <div class="px-8 pb-8">
+                            <div class="pl-[3.25rem] pb-5">
+                                <p class="text-secondary font-medium text-sm mb-2 italic">${escapeHtml(etapa.subtitulo)}</p>
+                                <p class="text-textLight text-sm mb-4">${escapeHtml(etapa.descripcion)}</p>
                                 ${crearImagenEtapa(etapa)}
-                                <div class="bg-white p-4 border-l-4 border-primary shadow-sm">
+                                <div class="bg-bgBeige p-4 border-l-4 border-primary">
                                     <span class="block text-xs font-bold text-primary uppercase mb-1">¿Cómo te beneficia?</span>
                                     <p class="text-xs text-textDark">${escapeHtml(etapa.beneficio)}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>`;
+                </li>`;
         }
 
         function alternarEtapa(boton) {
