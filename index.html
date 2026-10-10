@@ -24,10 +24,12 @@
                         heading: ['Montserrat', 'sans-serif'],
                     },
                     colors: {
-                        primary: '#2C3E50',
-                        secondary: '#D4AF37', /* Dorado suave */
+                        primary: '#3A4428', /* Oliva oscuro */
+                        secondary: '#6B7B35', /* Verde oliva */
+                        secondaryDark: '#55622A',
+                        secondaryLight: '#B5C47A', /* Oliva claro para fondos oscuros */
                         accent: '#EAECEE',
-                        textDark: '#1A252F',
+                        textDark: '#22281B',
                         textLight: '#7F8C8D',
                         bgBeige: '#F9F8F6'
                     }
@@ -43,7 +45,7 @@
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
         .hero-overlay {
-            background: linear-gradient(to right, rgba(26, 37, 47, 0.8), rgba(26, 37, 47, 0.4));
+            background: linear-gradient(to right, rgba(34, 40, 27, 0.8), rgba(34, 40, 27, 0.4));
         }
         /* Etapas del proceso contraíbles: el detalle se despliega animando su alto */
         .etapa-detalle {
@@ -115,11 +117,11 @@
         
         <!-- Hero Content -->
         <div class="relative z-10 text-center px-4 max-w-5xl mx-auto mt-16">
-            <span class="block text-secondary font-semibold tracking-[0.2em] uppercase mb-4 text-sm md:text-base">Arquitectura & Diseño Interior</span>
+            <span class="block text-secondaryLight font-semibold tracking-[0.2em] uppercase mb-4 text-sm md:text-base">Arquitectura & Diseño Interior</span>
             <h1 class="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-white mb-6 leading-tight">
                 Diseñamos espacios <br/><span class="font-light italic text-gray-200">pensados para vos</span>
             </h1>
-            <a href="#nosotros" class="inline-block bg-secondary text-white font-semibold py-4 px-10 rounded-none hover:bg-yellow-600 transition-colors duration-300 text-sm tracking-widest uppercase">
+            <a href="#nosotros" class="inline-block bg-secondary text-white font-semibold py-4 px-10 rounded-none hover:bg-secondaryDark transition-colors duration-300 text-sm tracking-widest uppercase">
                 Descubrí cómo
             </a>
         </div>
@@ -151,7 +153,7 @@
                             Porque proyectar no es solamente hacer planos: es crear un espacio que se adapte a vos, te represente y disfrutes todos los días.
                         </p>
                         <p id="mision" class="text-lg font-heading text-primary border-l-4 border-secondary pl-4 italic mt-8">"Dale forma a tu próximo proyecto. Te acompañamos desde la primera idea hasta la obra."</p>
-                        <a href="#contacto" class="inline-block bg-secondary text-white font-semibold py-4 px-10 rounded-none hover:bg-yellow-600 transition-colors duration-300 text-sm tracking-widest uppercase mt-4">
+                        <a href="#contacto" class="inline-block bg-secondary text-white font-semibold py-4 px-10 rounded-none hover:bg-secondaryDark transition-colors duration-300 text-sm tracking-widest uppercase mt-4">
                             Contanos qué tenés en mente
                         </a>
                     </div>
@@ -174,62 +176,26 @@
                 <div class="w-16 h-1 bg-secondary mx-auto mt-4 md:mt-6"></div>
             </div>
 
-            <ul class="grid grid-cols-1 md:grid-cols-2 md:gap-x-12">
-                <li class="flex items-start gap-4 py-3 border-b border-gray-200">
-                    <i class="fas fa-comments text-secondary text-base w-5 text-center mt-1 shrink-0" aria-hidden="true"></i>
-                    <div>
-                        <h3 class="font-heading font-semibold text-primary text-[15px] leading-snug">Planificación y escucha</h3>
-                        <p class="text-[13px] text-textLight leading-snug">Tus necesidades e ideas como punto de partida.</p>
-                    </div>
+            <ul class="max-w-2xl mx-auto border-t border-gray-200">
+                <li class="flex items-center gap-4 py-4 border-b border-gray-200">
+                    <i class="fas fa-comments text-secondary text-lg w-6 text-center shrink-0" aria-hidden="true"></i>
+                    <h3 class="font-heading font-semibold text-primary text-base md:text-lg leading-snug">Planificación y escucha</h3>
                 </li>
-                <li class="flex items-start gap-4 py-3 border-b border-gray-200">
-                    <i class="fas fa-pencil-ruler text-secondary text-base w-5 text-center mt-1 shrink-0" aria-hidden="true"></i>
-                    <div>
-                        <h3 class="font-heading font-semibold text-primary text-[15px] leading-snug">Croquis y anteproyecto</h3>
-                        <p class="text-[13px] text-textLight leading-snug">Las primeras ideas toman forma.</p>
-                    </div>
+                <li class="flex items-center gap-4 py-4 border-b border-gray-200">
+                    <i class="fas fa-pencil-ruler text-secondary text-lg w-6 text-center shrink-0" aria-hidden="true"></i>
+                    <h3 class="font-heading font-semibold text-primary text-base md:text-lg leading-snug">Croquis, proyecto y anteproyecto</h3>
                 </li>
-                <li class="flex items-start gap-4 py-3 border-b border-gray-200">
-                    <i class="fas fa-file-contract text-secondary text-base w-5 text-center mt-1 shrink-0" aria-hidden="true"></i>
-                    <div>
-                        <h3 class="font-heading font-semibold text-primary text-[15px] leading-snug">Documentación</h3>
-                        <p class="text-[13px] text-textLight leading-snug">Planos y documentación técnica para construir.</p>
-                    </div>
+                <li class="flex items-center gap-4 py-4 border-b border-gray-200">
+                    <i class="fas fa-file-contract text-secondary text-lg w-6 text-center shrink-0" aria-hidden="true"></i>
+                    <h3 class="font-heading font-semibold text-primary text-base md:text-lg leading-snug">Documentación técnica</h3>
                 </li>
-                <li class="flex items-start gap-4 py-3 border-b border-gray-200">
-                    <i class="fas fa-leaf text-secondary text-base w-5 text-center mt-1 shrink-0" aria-hidden="true"></i>
-                    <div>
-                        <h3 class="font-heading font-semibold text-primary text-[15px] leading-snug">Optimización</h3>
-                        <p class="text-[13px] text-textLight leading-snug">Diseño sustentable: luz, ventilación y asoleamiento.</p>
-                    </div>
+                <li class="flex items-center gap-4 py-4 border-b border-gray-200">
+                    <i class="fas fa-hard-hat text-secondary text-lg w-6 text-center shrink-0" aria-hidden="true"></i>
+                    <h3 class="font-heading font-semibold text-primary text-base md:text-lg leading-snug">Dirección de obra</h3>
                 </li>
-                <li class="flex items-start gap-4 py-3 border-b border-gray-200">
-                    <i class="fas fa-couch text-secondary text-base w-5 text-center mt-1 shrink-0" aria-hidden="true"></i>
-                    <div>
-                        <h3 class="font-heading font-semibold text-primary text-[15px] leading-snug">Diseño de interiores</h3>
-                        <p class="text-[13px] text-textLight leading-snug">Materiales, colores y texturas.</p>
-                    </div>
-                </li>
-                <li class="flex items-start gap-4 py-3 border-b border-gray-200">
-                    <i class="fas fa-calculator text-secondary text-base w-5 text-center mt-1 shrink-0" aria-hidden="true"></i>
-                    <div>
-                        <h3 class="font-heading font-semibold text-primary text-[15px] leading-snug">Costos y asesoría</h3>
-                        <p class="text-[13px] text-textLight leading-snug">Estimación de costos y asesoramiento continuo.</p>
-                    </div>
-                </li>
-                <li class="flex items-start gap-4 py-3 border-b border-gray-200">
-                    <i class="fas fa-hard-hat text-secondary text-base w-5 text-center mt-1 shrink-0" aria-hidden="true"></i>
-                    <div>
-                        <h3 class="font-heading font-semibold text-primary text-[15px] leading-snug">Dirección de obra</h3>
-                        <p class="text-[13px] text-textLight leading-snug">Seguimiento de cada detalle en la obra.</p>
-                    </div>
-                </li>
-                <li class="flex items-start gap-4 py-3 border-b border-gray-200">
-                    <i class="fas fa-users-cog text-secondary text-base w-5 text-center mt-1 shrink-0" aria-hidden="true"></i>
-                    <div>
-                        <h3 class="font-heading font-semibold text-primary text-[15px] leading-snug">Equipo capacitado</h3>
-                        <p class="text-[13px] text-textLight leading-snug">Personal calificado, asegurado y de confianza.</p>
-                    </div>
+                <li class="flex items-center gap-4 py-4 border-b border-gray-200">
+                    <i class="fas fa-users-cog text-secondary text-lg w-6 text-center shrink-0" aria-hidden="true"></i>
+                    <h3 class="font-heading font-semibold text-primary text-base md:text-lg leading-snug">Manejo con personal calificado y asegurado</h3>
                 </li>
             </ul>
         </div>
@@ -255,9 +221,9 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
                 <!-- Contact Info -->
                 <div>
-                    <span class="text-secondary font-semibold tracking-wider uppercase text-sm">Hablemos</span>
+                    <span class="text-secondaryLight font-semibold tracking-wider uppercase text-sm">Hablemos</span>
                     <h2 class="text-3xl md:text-4xl font-heading font-bold mt-2 mb-6">Empecemos a diseñar<br>tu nuevo espacio.</h2>
-                    <div class="w-16 h-1 bg-secondary mb-8"></div>
+                    <div class="w-16 h-1 bg-secondaryLight mb-8"></div>
                     
                     <p class="text-gray-300 mb-10 font-light leading-relaxed">
                         Si tenés un proyecto en mente, una reforma pendiente o simplemente querés consultar nuestra forma de trabajar, escribinos. Estamos acá para escucharte.
@@ -265,7 +231,7 @@
 
                     <div class="space-y-6">
                         <div class="flex items-start">
-                            <div class="w-12 h-12 bg-white/10 rounded flex items-center justify-center mr-4 shrink-0 text-secondary">
+                            <div class="w-12 h-12 bg-white/10 rounded flex items-center justify-center mr-4 shrink-0 text-secondaryLight">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div>
@@ -274,7 +240,7 @@
                             </div>
                         </div>
                         <div class="flex items-start">
-                            <div class="w-12 h-12 bg-white/10 rounded flex items-center justify-center mr-4 shrink-0 text-secondary">
+                            <div class="w-12 h-12 bg-white/10 rounded flex items-center justify-center mr-4 shrink-0 text-secondaryLight">
                                 <i class="fas fa-phone-alt"></i>
                             </div>
                             <div>
@@ -283,7 +249,7 @@
                             </div>
                         </div>
                         <div class="flex items-start">
-                            <div class="w-12 h-12 bg-white/10 rounded flex items-center justify-center mr-4 shrink-0 text-secondary">
+                            <div class="w-12 h-12 bg-white/10 rounded flex items-center justify-center mr-4 shrink-0 text-secondaryLight">
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <div>
@@ -336,7 +302,7 @@
     <footer class="bg-gray-900 border-t border-gray-800 py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
             <div class="mb-4 md:mb-0">
-                <span class="font-heading font-bold text-xl tracking-widest text-white">ESTUDIO<span class="text-secondary">.</span></span>
+                <span class="font-heading font-bold text-xl tracking-widest text-white">ESTUDIO<span class="text-secondaryLight">.</span></span>
             </div>
             <div class="flex space-x-6">
                 <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-instagram text-xl"></i></a>
@@ -450,13 +416,13 @@
 
         // Cada etapa muestra solo su número y nombre; "Ver más" despliega subtítulo, descripción, imagen y beneficio
         function crearTarjetaEtapa(etapa, indice) {
-            const numero = indice + 1;
+            const numero = String(indice + 1).padStart(2, '0');
             const idDetalle = `etapa-detalle-${numero}`;
             return `
                 <li class="etapa border-b border-gray-200">
                     <button type="button" aria-expanded="false" aria-controls="${idDetalle}"
                             class="etapa-boton group w-full flex items-center gap-4 py-3 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary">
-                        <span class="w-9 h-9 shrink-0 rounded-full bg-secondary text-white font-heading font-bold text-base flex items-center justify-center" aria-hidden="true">${numero}</span>
+                        <span class="w-10 h-10 shrink-0 rounded-xl bg-secondary/10 ring-1 ring-secondary/30 text-secondary font-heading font-bold text-sm tracking-wide flex items-center justify-center group-hover:bg-secondary group-hover:text-white transition-colors duration-300" aria-hidden="true">${numero}</span>
                         <h3 class="flex-1 font-heading font-semibold text-base md:text-lg text-primary">${escapeHtml(etapa.nombre)}</h3>
                         <span class="inline-flex items-center gap-1.5 px-3 py-1.5 border border-secondary text-[11px] font-bold text-primary uppercase tracking-wider group-hover:bg-secondary group-hover:text-white transition-colors duration-300">
                             <span class="etapa-texto">Ver más</span>
