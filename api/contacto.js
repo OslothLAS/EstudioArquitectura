@@ -42,7 +42,11 @@ module.exports = async (req, res) => {
         return res.status(400).json({ error: 'Revisá que el nombre, el correo y el mensaje estén completos.' });
     }
 
-    const { RESEND_API_KEY, CONTACTO_PARA, CONTACTO_DESDE } = process.env;
+    // Se limpian espacios, saltos de línea y comillas que se pueden colar al pegar en Vercel
+    const variable = nombre => (process.env[nombre] || '').trim().replace(/^["']|["']$/g, '').trim();
+    const RESEND_API_KEY = variable('RESEND_API_KEY');
+    const CONTACTO_PARA = variable('CONTACTO_PARA');
+    const CONTACTO_DESDE = variable('CONTACTO_DESDE');
     if (!RESEND_API_KEY || !CONTACTO_PARA) {
         console.error('Faltan las variables RESEND_API_KEY o CONTACTO_PARA');
         return res.status(500).json({ error: 'El formulario todavía no está configurado.' });
@@ -71,6 +75,10 @@ module.exports = async (req, res) => {
 
     if (!respuesta.ok) {
         console.error('Error de Resend', respuesta.status, await respuesta.text());
+        // Pista para revisar la clave sin mostrarla: largo y comienzo (una clave válida empieza con "re_")
+        const crudo = process.env.RESEND_API_KEY;
+        console.error(`Clave usada: ${RESEND_API_KEY.length} caracteres, empieza con "${RESEND_API_KEY.slice(0, 3)}"` +
+            (crudo.length !== RESEND_API_KEY.length ? ` (se limpiaron ${crudo.length - RESEND_API_KEY.length} caracteres de más)` : ''));
         return res.status(502).json({ error: 'No pudimos enviar tu mensaje. Probá de nuevo en unos minutos.' });
     }
 
