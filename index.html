@@ -675,6 +675,7 @@
         const formContacto = document.getElementById('form-contacto');
         const formBoton = document.getElementById('form-boton');
         const formMsg = document.getElementById('form-message');
+        const paginaAbierta = Date.now();  // el servidor descarta envíos hechos demasiado rápido (bots)
 
         function mostrarResultado(texto, esError) {
             formMsg.textContent = texto;
@@ -699,7 +700,8 @@
                         email: document.getElementById('email').value,
                         servicio: document.getElementById('service').value,
                         mensaje: document.getElementById('message').value,
-                        sitio: document.getElementById('sitio').value
+                        sitio: document.getElementById('sitio').value,
+                        tiempo: Date.now() - paginaAbierta
                     })
                 });
                 const datos = await respuesta.json().catch(() => ({}));

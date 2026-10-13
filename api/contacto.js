@@ -3,8 +3,41 @@
 //   RESEND_API_KEY  clave de Resend
 //   CONTACTO_PARA   mail del estudio que recibe las consultas
 //   CONTACTO_DESDE  (opcional) remitente; por defecto el de prueba de Resend
+//   KV_REST_API_URL y KV_REST_API_TOKEN (opcionales) base Upstash Redis para limitar
+//   mensajes por persona; Vercel las crea solas al conectar Upstash. Sin ellas no hay límite.
+
+const crypto = require('crypto');
 
 const LIMITES = { nombre: 100, email: 150, servicio: 100, mensaje: 5000 };
+const TIEMPO_MINIMO_MS = 3000;      // menos que esto desde que abrió la página = bot
+const MENSAJES_POR_HORA = 3;        // por conexión (IP)
+
+// Cuenta los envíos de esta IP en la última hora. Devuelve true si se pasó del límite.
+// Si la base no está configurada o falla, no bloquea: es mejor recibir spam que perder una consulta.
+async function superaLimite(req) {
+    const url = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
+    const token = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+    if (!url || !token) return false;
+
+    const ip = String(req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || '').split(',')[0].trim();
+    if (!ip) return false;
+    // Se guarda un hash, no la IP
+    const clave = 'contacto:' + crypto.createHash('sha256').update(ip).digest('hex').slice(0, 32);
+
+    try {
+        const respuesta = await fetch(`${url}/pipeline`, {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify([['INCR', clave], ['EXPIRE', clave, 3600, 'NX']])
+        });
+        if (!respuesta.ok) throw new Error(`Upstash respondió ${respuesta.status}`);
+        const [{ result: envios }] = await respuesta.json();
+        return envios > MENSAJES_POR_HORA;
+    } catch (error) {
+        console.error('No se pudo verificar el límite de mensajes:', error.message);
+        return false;
+    }
+}
 
 function escapeHtml(texto) {
     return String(texto)
@@ -29,6 +62,9 @@ module.exports = async (req, res) => {
     // Campo trampa: las personas no lo ven, los bots de spam lo completan
     if (datos.sitio) return res.status(200).json({ ok: true });
 
+    // Enviado demasiado rápido para haberlo escrito una persona: se descarta en silencio
+    if (!(Number(datos.tiempo) >= TIEMPO_MINIMO_MS)) return res.status(200).json({ ok: true });
+
     const nombre = limpiar(datos.nombre, LIMITES.nombre);
     const email = limpiar(datos.email, LIMITES.email);
     const servicio = limpiar(datos.servicio, LIMITES.servicio);
@@ -42,6 +78,10 @@ module.exports = async (req, res) => {
     if (!RESEND_API_KEY || !CONTACTO_PARA) {
         console.error('Faltan las variables RESEND_API_KEY o CONTACTO_PARA');
         return res.status(500).json({ error: 'El formulario todavía no está configurado.' });
+    }
+
+    if (await superaLimite(req)) {
+        return res.status(429).json({ error: 'Ya recibimos varios mensajes tuyos. Si necesitás escribirnos de nuevo, probá en un rato.' });
     }
 
     const respuesta = await fetch('https://api.resend.com/emails', {
