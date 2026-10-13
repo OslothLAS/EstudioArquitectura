@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estudio de Arquitectura | Diseñamos espacios pensados para vos</title>
+    <title>Estudio de Arquitectura | Construimos lo que imaginás</title>
     
     <!-- Google Fonts: Montserrat para encabezados y Open Sans para texto -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,7 +30,7 @@
                         secondaryLight: '#8AA2C4', /* Azul claro para fondos oscuros */
                         accent: '#EAECEE',
                         textDark: '#1E2533',
-                        textLight: '#7F8C8D',
+                        textLight: '#525C66', /* Gris de texto, más oscuro para mejor lectura */
                         bgBeige: '#F9F8F6'
                     }
                 }
@@ -54,10 +54,10 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
         }
-        /* Foto de servicio: si el archivo todavía no existe, se ve un recuadro vacío */
-        .servicio-foto .foto-vacia { display: none; }
-        .servicio-foto.sin-foto img { display: none; }
-        .servicio-foto.sin-foto .foto-vacia { display: flex; }
+        /* Foto: si el archivo todavía no existe, se ve un recuadro vacío */
+        .foto-slot .foto-vacia { display: none; }
+        .foto-slot.sin-foto img { display: none; }
+        .foto-slot.sin-foto .foto-vacia { display: flex; }
         /* Etapas del proceso contraíbles: el detalle se despliega animando su alto */
         .etapa-detalle {
             display: grid;
@@ -92,15 +92,16 @@
                 </div>
                 
                 <!-- Desktop Menu -->
-                <nav class="hidden md:flex space-x-6 lg:space-x-8">
+                <nav class="hidden lg:flex space-x-6 xl:space-x-8">
                     <a href="#quien-lidera" class="text-sm font-semibold text-textDark hover:text-secondary transition-colors uppercase tracking-wider">Quién lidera el estudio</a>
+                    <a href="#ia-arquitectura" class="text-sm font-semibold text-textDark hover:text-secondary transition-colors uppercase tracking-wider">La IA y la Arquitectura</a>
                     <a href="#servicios" class="text-sm font-semibold text-textDark hover:text-secondary transition-colors uppercase tracking-wider">Servicios</a>
                     <a href="#proceso" class="text-sm font-semibold text-textDark hover:text-secondary transition-colors uppercase tracking-wider">Proceso</a>
                     <a href="#contacto" class="text-sm font-semibold text-textDark hover:text-secondary transition-colors uppercase tracking-wider">Contacto</a>
                 </nav>
 
                 <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center">
+                <div class="lg:hidden flex items-center">
                     <button id="mobile-menu-btn" class="text-textDark hover:text-secondary focus:outline-none">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
@@ -109,9 +110,10 @@
         </div>
         
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full">
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 absolute w-full">
             <div class="px-4 pt-2 pb-6 space-y-1 shadow-lg">
                 <a href="#quien-lidera" class="block px-3 py-3 text-base font-medium text-textDark hover:text-secondary hover:bg-gray-50 border-b border-gray-50">Quién lidera el estudio</a>
+                <a href="#ia-arquitectura" class="block px-3 py-3 text-base font-medium text-textDark hover:text-secondary hover:bg-gray-50 border-b border-gray-50">La IA y la Arquitectura</a>
                 <a href="#servicios" class="block px-3 py-3 text-base font-medium text-textDark hover:text-secondary hover:bg-gray-50 border-b border-gray-50">Servicios</a>
                 <a href="#proceso" class="block px-3 py-3 text-base font-medium text-textDark hover:text-secondary hover:bg-gray-50 border-b border-gray-50">Proceso</a>
                 <a href="#contacto" class="block px-3 py-3 text-base font-medium text-textDark hover:text-secondary hover:bg-gray-50">Contacto</a>
@@ -130,7 +132,7 @@
         <div class="relative z-10 text-center px-4 max-w-5xl mx-auto mt-16">
             <span class="block text-secondaryLight font-semibold tracking-[0.2em] uppercase mb-4 text-sm md:text-base">Arquitectura & Construccion</span>
             <h1 class="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-white mb-6 leading-tight">
-                Diseñamos espacios <br/><span class="font-light italic text-gray-200">pensados para vos</span>
+                Construimos <br/><span class="font-light italic text-gray-200">lo que imaginás</span>
             </h1>
             <a href="#nosotros" class="glass inline-block text-white font-semibold py-4 px-10 rounded-none hover:bg-white hover:text-black transition-colors duration-300 text-sm tracking-widest uppercase">
                 Descubrí cómo
@@ -145,8 +147,7 @@
                 <!-- Text Content -->
                 <div>
                     <div class="mb-8">
-                        <span class="text-secondary font-semibold tracking-wider uppercase text-sm">Nuestra Filosofía</span>
-                        <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary mt-2 mb-6">Todo proyecto empieza con una idea.</h2>
+                        <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">Todo proyecto empieza con una idea.</h2>
                         <div class="w-16 h-1 bg-secondary mb-6"></div>
                     </div>
                     
@@ -157,7 +158,7 @@
                         <p>
                             Te acompañamos en cada etapa y te explicamos las decisiones con claridad, para que transites el proceso con tranquilidad. Cuidamos cada decisión de diseño, cada etapa de la obra y cada elección de materiales, para que puedas seguir con tu día a día sin preocuparte por cada detalle. Solo necesitás estar presente en los momentos importantes y dejar que, poco a poco, el espacio cobre vida.
                         </p>
-                        <p class="font-medium text-textDark">
+                        <p>
                             Lideramos cada proyecto desde el inicio: asesoramos, diseñamos y dirigimos cada etapa de la construcción, acompañando al cliente con profesionalismo y promoviendo su participación en las decisiones.
                         </p>
                         <p id="mision" class="text-lg font-heading text-primary border-l-4 border-secondary pl-4 italic mt-8">"Dale forma a tu próximo proyecto. Te acompañamos desde la primera idea hasta la obra."</p>
@@ -167,10 +168,44 @@
                     </div>
                 </div>
 
-                <!-- Image Collage -->
-                <div class="relative h-full min-h-[500px]">
-                    <img src="img/nosotros-interior.jpg" alt="Diseño de interiores" class="absolute top-0 right-0 w-4/5 h-4/5 object-cover rounded shadow-2xl z-10">
-                    <img src="img/nosotros-planos.jpg" alt="Planos de arquitectura" class="absolute bottom-0 left-0 w-3/5 h-3/5 object-cover rounded shadow-xl border-8 border-white z-20">
+                <!-- Fotos de obras: guardalas como img/inicio/foto-1.jpg ... foto-4.jpg -->
+                <div class="grid grid-cols-2 gap-3 md:gap-4">
+                    <div class="space-y-3 md:space-y-4">
+                        <div class="foto-slot">
+                            <img src="img/inicio/foto-1.jpg" alt="Obra del estudio" loading="lazy" class="w-full aspect-[3/4] object-cover rounded shadow-xl"
+                                 onerror="this.parentElement.classList.add('sin-foto')">
+                            <div class="foto-vacia aspect-[3/4] rounded border border-dashed border-gray-300 bg-bgBeige flex-col items-center justify-center gap-2 text-textLight text-xs uppercase tracking-wider">
+                                <i class="fas fa-camera text-2xl" aria-hidden="true"></i>
+                                Foto 1
+                            </div>
+                        </div>
+                        <div class="foto-slot">
+                            <img src="img/inicio/foto-3.jpg" alt="Obra del estudio" loading="lazy" class="w-full aspect-square object-cover rounded shadow-xl"
+                                 onerror="this.parentElement.classList.add('sin-foto')">
+                            <div class="foto-vacia aspect-square rounded border border-dashed border-gray-300 bg-bgBeige flex-col items-center justify-center gap-2 text-textLight text-xs uppercase tracking-wider">
+                                <i class="fas fa-camera text-2xl" aria-hidden="true"></i>
+                                Foto 3
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-3 md:space-y-4 pt-8 md:pt-12">
+                        <div class="foto-slot">
+                            <img src="img/inicio/foto-2.jpg" alt="Obra del estudio" loading="lazy" class="w-full aspect-square object-cover rounded shadow-xl"
+                                 onerror="this.parentElement.classList.add('sin-foto')">
+                            <div class="foto-vacia aspect-square rounded border border-dashed border-gray-300 bg-bgBeige flex-col items-center justify-center gap-2 text-textLight text-xs uppercase tracking-wider">
+                                <i class="fas fa-camera text-2xl" aria-hidden="true"></i>
+                                Foto 2
+                            </div>
+                        </div>
+                        <div class="foto-slot">
+                            <img src="img/inicio/foto-4.jpg" alt="Obra del estudio" loading="lazy" class="w-full aspect-[3/4] object-cover rounded shadow-xl"
+                                 onerror="this.parentElement.classList.add('sin-foto')">
+                            <div class="foto-vacia aspect-[3/4] rounded border border-dashed border-gray-300 bg-bgBeige flex-col items-center justify-center gap-2 text-textLight text-xs uppercase tracking-wider">
+                                <i class="fas fa-camera text-2xl" aria-hidden="true"></i>
+                                Foto 4
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -178,8 +213,8 @@
 
     <section id="quien-lidera" class="hidden relative scroll-mt-20 py-16 md:py-24 bg-bgBeige">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <button type="button" id="cerrar-quien-lidera" aria-label="Cerrar"
-                    class="absolute top-6 right-4 sm:right-6 w-10 h-10 rounded-full border border-gray-300 text-primary hover:bg-primary hover:text-white transition-colors flex items-center justify-center">
+            <button type="button" aria-label="Cerrar"
+                    class="cerrar-desplegable absolute top-6 right-4 sm:right-6 w-10 h-10 rounded-full border border-gray-300 text-primary hover:bg-primary hover:text-white transition-colors flex items-center justify-center">
                 <i class="fas fa-times" aria-hidden="true"></i>
             </button>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16">
@@ -188,12 +223,6 @@
                     <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary mt-2">Jessica Silvero Ruiz</h2>
                     <p class="mt-2 font-heading text-secondary">Arquitecta y Maestra Mayor de Obras</p>
                     <div class="w-16 h-1 bg-secondary mt-6"></div>
-
-                    <ul class="mt-8 space-y-4 text-sm">
-                        <li class="flex gap-3"><i class="fas fa-award text-secondary mt-0.5 w-4 text-center" aria-hidden="true"></i><span><strong class="text-primary">2013</strong> · Mención al mérito como Maestra Mayor de Obras</span></li>
-                        <li class="flex gap-3"><i class="fas fa-graduation-cap text-secondary mt-0.5 w-4 text-center" aria-hidden="true"></i><span><strong class="text-primary">2017 y 2018</strong> · Alumna destacada, UNSAM</span></li>
-                        <li class="flex gap-3"><i class="fas fa-chair text-secondary mt-0.5 w-4 text-center" aria-hidden="true"></i><span>Fundadora de <strong class="text-primary">El Edén Mobiliario</strong></span></li>
-                    </ul>
                 </div>
 
                 <div class="lg:col-span-2 space-y-5 text-textLight leading-relaxed">
@@ -203,11 +232,38 @@
                     <p>
                         Cuenta con experiencia en obras privadas y en obras públicas de gran escala. En el ámbito de la obra pública, se desempeñó como representante técnica y participó en el seguimiento de las obras y en la firma de certificados. Además, cuenta con trayectoria docente universitaria. También tiene experiencia en el desarrollo de mobiliario y es fundadora de El Edén Mobiliario, su emprendimiento propio de muebles.
                     </p>
-                    <p class="font-medium text-textDark">
+                    <p>
                         Su perfil integra arquitectura, docencia, obra y mobiliario, con atención al detalle e interés en la neuroarquitectura y el impacto de las formas y los materiales en la psicología y experiencia de las personas.
                     </p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section id="ia-arquitectura" class="hidden relative scroll-mt-20 py-16 md:py-24 bg-white border-t border-gray-100">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <button type="button" aria-label="Cerrar"
+                    class="cerrar-desplegable absolute top-6 right-4 sm:right-6 w-10 h-10 rounded-full border border-gray-300 text-primary hover:bg-primary hover:text-white transition-colors flex items-center justify-center">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+            <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary">La IA y la Arquitectura</h2>
+            <div class="w-16 h-1 bg-secondary mt-6 mb-8"></div>
+
+            <div class="space-y-5 text-textLight text-base md:text-lg leading-relaxed">
+                <p>
+                    Hoy en día, es fácil pedirle a una pantalla que diseñe el hogar de tus sueños, imaginando espacios que respondan a tus gustos, necesidades y expectativas. Pero la verdadera magia comienza cuando esas ideas salen del mundo digital y empiezan a tomar forma en la realidad.
+                </p>
+                <p>
+                    <strong class="text-primary">Nosotros no somos algoritmos.</strong> Somos profesionales que combinamos creatividad, conocimiento técnico y experiencia para transformar tus ideas en proyectos reales, funcionales y adaptados a tu presupuesto.
+                </p>
+                <p>
+                    Porque diseñar no es solo crear algo atractivo, sino encontrar la mejor manera de hacerlo posible, considerando los materiales, las normativas y cada detalle de su construcción.
+                </p>
+            </div>
+
+            <p class="mt-10 text-xl md:text-2xl font-heading text-primary border-l-4 border-secondary pl-5">
+                La inteligencia artificial te ayuda a imaginarlo. <strong>Nosotros sabemos cómo hacerlo realidad.</strong>
+            </p>
         </div>
     </section>
 
@@ -218,8 +274,7 @@
         </div>
         <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-6 md:mb-12">
-                <span class="text-secondaryLight font-semibold tracking-wider uppercase text-sm">Nuestros Servicios</span>
-                <h2 class="text-2xl md:text-4xl font-heading font-bold text-white mt-2">Proyecto y Dirección de Obra</h2>
+                <h2 class="text-2xl md:text-4xl font-heading font-bold text-white">Nuestros servicios</h2>
                 <div class="w-16 h-1 bg-white mx-auto mt-4 md:mt-6"></div>
             </div>
 
@@ -239,8 +294,35 @@
                             <div class="pl-10 pr-2 pb-5">
                                 <p class="text-sm text-white/75 leading-relaxed mb-4">Proyecto y construcción de espacios pensados para tu forma de vivir.</p>
                                 <!-- Para mostrar la foto, guardala como img/servicios/viviendas.jpg -->
-                                <div class="servicio-foto">
+                                <div class="foto-slot">
                                     <img src="img/servicios/viviendas.jpg" alt="Viviendas" class="w-full aspect-[4/3] object-cover rounded-lg border border-white/20"
+                                         onerror="this.parentElement.classList.add('sin-foto')">
+                                    <div class="foto-vacia aspect-[4/3] rounded-lg border border-dashed border-white/30 bg-white/5 flex-col items-center justify-center gap-2 text-white/50 text-xs uppercase tracking-wider">
+                                        <i class="fas fa-camera text-2xl" aria-hidden="true"></i>
+                                        Foto próximamente
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="etapa border-b border-white/15">
+                    <button type="button" aria-expanded="false" aria-controls="servicio-detalle-remodelaciones"
+                            class="etapa-boton group w-full flex items-center gap-4 py-3 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60">
+                        <i class="fas fa-paint-roller text-white/90 text-lg w-6 text-center shrink-0" aria-hidden="true"></i>
+                        <h3 class="flex-1 font-heading font-semibold text-white text-base md:text-lg leading-snug">Remodelaciones</h3>
+                        <span class="glass shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-bold text-white uppercase tracking-wider group-hover:bg-white group-hover:text-black transition-colors duration-300">
+                            <span class="etapa-texto">Ver más</span>
+                            <i class="etapa-icono fas fa-chevron-down" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                    <div id="servicio-detalle-remodelaciones" class="etapa-detalle" inert>
+                        <div>
+                            <div class="pl-10 pr-2 pb-5">
+                                <p class="text-sm text-white/75 leading-relaxed mb-4">Renovamos y transformamos espacios existentes para adaptarlos a nuevas necesidades.</p>
+                                <!-- Para mostrar la foto, guardala como img/servicios/remodelaciones.jpg -->
+                                <div class="foto-slot">
+                                    <img src="img/servicios/remodelaciones.jpg" alt="Remodelaciones" class="w-full aspect-[4/3] object-cover rounded-lg border border-white/20"
                                          onerror="this.parentElement.classList.add('sin-foto')">
                                     <div class="foto-vacia aspect-[4/3] rounded-lg border border-dashed border-white/30 bg-white/5 flex-col items-center justify-center gap-2 text-white/50 text-xs uppercase tracking-wider">
                                         <i class="fas fa-camera text-2xl" aria-hidden="true"></i>
@@ -266,7 +348,7 @@
                             <div class="pl-10 pr-2 pb-5">
                                 <p class="text-sm text-white/75 leading-relaxed mb-4">Soluciones funcionales y resistentes adaptadas a cada actividad productiva.</p>
                                 <!-- Para mostrar la foto, guardala como img/servicios/obras-rurales.jpg -->
-                                <div class="servicio-foto">
+                                <div class="foto-slot">
                                     <img src="img/servicios/obras-rurales.jpg" alt="Obras rurales" class="w-full aspect-[4/3] object-cover rounded-lg border border-white/20"
                                          onerror="this.parentElement.classList.add('sin-foto')">
                                     <div class="foto-vacia aspect-[4/3] rounded-lg border border-dashed border-white/30 bg-white/5 flex-col items-center justify-center gap-2 text-white/50 text-xs uppercase tracking-wider">
@@ -293,7 +375,7 @@
                             <div class="pl-10 pr-2 pb-5">
                                 <p class="text-sm text-white/75 leading-relaxed mb-4">Diseño y construcción de espacios eficientes para guardado, trabajo o producción.</p>
                                 <!-- Para mostrar la foto, guardala como img/servicios/galpones.jpg -->
-                                <div class="servicio-foto">
+                                <div class="foto-slot">
                                     <img src="img/servicios/galpones.jpg" alt="Galpones" class="w-full aspect-[4/3] object-cover rounded-lg border border-white/20"
                                          onerror="this.parentElement.classList.add('sin-foto')">
                                     <div class="foto-vacia aspect-[4/3] rounded-lg border border-dashed border-white/30 bg-white/5 flex-col items-center justify-center gap-2 text-white/50 text-xs uppercase tracking-wider">
@@ -320,7 +402,7 @@
                             <div class="pl-10 pr-2 pb-5">
                                 <p class="text-sm text-white/75 leading-relaxed mb-4">Proyectos adaptados a las necesidades operativas y productivas de cada empresa.</p>
                                 <!-- Para mostrar la foto, guardala como img/servicios/naves-industriales.jpg -->
-                                <div class="servicio-foto">
+                                <div class="foto-slot">
                                     <img src="img/servicios/naves-industriales.jpg" alt="Naves industriales" class="w-full aspect-[4/3] object-cover rounded-lg border border-white/20"
                                          onerror="this.parentElement.classList.add('sin-foto')">
                                     <div class="foto-vacia aspect-[4/3] rounded-lg border border-dashed border-white/30 bg-white/5 flex-col items-center justify-center gap-2 text-white/50 text-xs uppercase tracking-wider">
@@ -389,21 +471,21 @@
                     </div>
                 </li>
             </ul>
+
+            <!-- Cierre de servicios: queda dentro del fondo negro para que no corte la transición -->
+            <div class="glass max-w-2xl mx-auto mt-10 md:mt-14 px-6 py-8 md:px-10 md:py-10 text-center rounded-lg">
+                <i class="fas fa-route text-white/80 text-2xl mb-4" aria-hidden="true"></i>
+                <p class="font-heading text-lg md:text-2xl text-white leading-relaxed">
+                    Podés elegir un <strong class="font-semibold">servicio puntual</strong> o confiarnos el <strong class="font-semibold">proceso completo</strong>, desde la primera idea hasta la entrega final de la obra.
+                </p>
+            </div>
         </div>
     </section>
-
-    <!-- Franja entre servicios y proceso -->
-    <div class="bg-secondary text-white">
-        <p class="max-w-3xl mx-auto px-4 sm:px-6 py-10 md:py-14 text-center font-heading text-lg md:text-2xl font-light leading-relaxed">
-            Podés elegir un servicio puntual o confiarnos el proceso completo, desde la primera idea hasta la entrega final de la obra.
-        </p>
-    </div>
 
     <section id="proceso" class="py-14 md:py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-6 md:mb-12 max-w-3xl mx-auto">
-                <span class="text-secondary font-semibold tracking-wider uppercase text-sm">Paso a paso</span>
-                <h2 class="text-2xl md:text-4xl font-heading font-bold text-primary mt-2">El proceso de tu proyecto</h2>
+                <h2 class="text-2xl md:text-4xl font-heading font-bold text-primary">El proceso de tu proyecto</h2>
                 <div class="w-16 h-1 bg-secondary mt-4 md:mt-6 mb-4 md:mb-6"></div>
                 <p class="hidden md:block text-textLight">
                     Cada proyecto comienza con una idea y se transforma, paso a paso, en un espacio pensado para vos. Te acompañamos durante todo el proceso, desde las primeras conversaciones hasta la materialización de la obra.
@@ -534,22 +616,24 @@
             });
         });
 
-        // "Quién lidera el estudio" solo aparece al tocarlo en el menú
-        const quienLidera = document.getElementById('quien-lidera');
-        function mostrarQuienLidera() {
-            quienLidera.classList.remove('hidden');
-            quienLidera.scrollIntoView({ behavior: 'smooth' });
-        }
-        document.querySelectorAll('a[href="#quien-lidera"]').forEach(link =>
-            link.addEventListener('click', e => {
-                e.preventDefault();
-                mostrarQuienLidera();
-            }));
-        document.getElementById('cerrar-quien-lidera').addEventListener('click', () => {
-            quienLidera.classList.add('hidden');
-            document.getElementById('servicios').scrollIntoView();
+        // "Quién lidera el estudio" y "La IA y la Arquitectura" solo aparecen al tocarlos en el menú
+        ['quien-lidera', 'ia-arquitectura'].forEach(id => {
+            const seccion = document.getElementById(id);
+            function mostrar() {
+                seccion.classList.remove('hidden');
+                seccion.scrollIntoView({ behavior: 'smooth' });
+            }
+            document.querySelectorAll(`a[href="#${id}"]`).forEach(link =>
+                link.addEventListener('click', e => {
+                    e.preventDefault();
+                    mostrar();
+                }));
+            seccion.querySelector('.cerrar-desplegable').addEventListener('click', () => {
+                seccion.classList.add('hidden');
+                document.getElementById('servicios').scrollIntoView();
+            });
+            if (location.hash === `#${id}`) mostrar();
         });
-        if (location.hash === '#quien-lidera') mostrarQuienLidera();
 
         // Mensaje simulado en lugar de alert()
         function showMessage() {
@@ -568,30 +652,23 @@
         // Cada imagen está en img/proceso/; si una etapa no tiene, poné imagen: null.
         const ETAPAS = [
             {
-                nombre: 'Plan de necesidades',
-                subtitulo: 'Conocemos tu forma de vivir.',
-                descripcion: 'Conversamos sobre tus necesidades, gustos, hábitos y expectativas, analizamos el terreno o espacio existente y nos adaptamos a tu presupuesto.',
-                beneficio: 'Nos permite comprender qué necesitás realmente y establecer una base clara antes de comenzar a diseñar.',
-                imagen: 'img/proceso/plan-de-necesidades.jpg'
-            },
-            {
-                nombre: 'Croquis',
-                subtitulo: 'Le damos forma a las primeras ideas.',
-                descripcion: 'Exploramos distintas posibilidades de distribución y relación entre los espacios.',
-                beneficio: 'Podés visualizar las primeras propuestas, comparar alternativas y participar desde el comienzo en las decisiones del proyecto.',
+                nombre: 'Programa y croquis',
+                subtitulo: 'Damos forma a las primeras ideas.',
+                descripcion: 'Conversamos sobre tus gustos, hábitos, expectativas y presupuesto. Analizamos el terreno o espacio existente y exploramos distintas alternativas de diseño y distribución.',
+                beneficio: 'Podés visualizar las primeras propuestas, comparar alternativas y participar desde el inicio en un diseño pensado para vos y adaptado a tu presupuesto.',
                 imagen: 'img/proceso/croquis.jpg'
             },
             {
                 nombre: 'Anteproyecto',
                 subtitulo: 'Definimos cómo será tu espacio.',
-                descripcion: 'Desarrollamos la propuesta elegida, trabajando la distribución, las dimensiones, la estética y los materiales.',
+                descripcion: 'Desarrollamos la propuesta elegida, definiendo la distribución, las dimensiones, la estética y los materiales, respetando las normativas vigentes.',
                 beneficio: 'Te permite comprender cómo se verá y cómo funcionará el espacio antes de avanzar a la documentación definitiva.',
                 imagen: 'img/proceso/anteproyecto.jpg'
             },
             {
                 nombre: 'Proyecto',
                 subtitulo: 'Convertimos la idea en una propuesta definida.',
-                descripcion: 'Ajustamos y definimos los ambientes, sus medidas, materiales y características principales.',
+                descripcion: 'Ajustamos y definimos los ambientes, sus medidas, materiales y características principales. Elaboramos representaciones visuales, maquetas y renders para comprender mejor el diseño.',
                 beneficio: 'Llegás a una propuesta final clara, revisada y adaptada a tus necesidades, evitando decisiones improvisadas durante la obra.',
                 imagen: 'img/proceso/proyecto.jpg'
             },
@@ -654,8 +731,8 @@
                                 <p class="text-textLight text-sm mb-4">${escapeHtml(etapa.descripcion)}</p>
                                 ${crearImagenEtapa(etapa)}
                                 <div class="bg-bgBeige p-4 border-l-4 border-primary">
-                                    <span class="block text-xs font-bold text-primary uppercase mb-1">¿Cómo te beneficia?</span>
-                                    <p class="text-xs text-textDark">${escapeHtml(etapa.beneficio)}</p>
+                                    <span class="block text-sm md:text-base font-bold text-black uppercase mb-1">¿Cómo te beneficia?</span>
+                                    <p class="text-sm text-textDark">${escapeHtml(etapa.beneficio)}</p>
                                 </div>
                             </div>
                         </div>
