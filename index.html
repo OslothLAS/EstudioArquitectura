@@ -579,7 +579,12 @@
                 <!-- Contact Form -->
                 <div class="glass p-8 md:p-10 rounded-2xl shadow-2xl">
                     <h3 class="text-2xl font-heading font-bold text-white mb-6">Envianos tu consulta</h3>
-                    <form onsubmit="event.preventDefault(); showMessage();">
+                    <form id="form-contacto" novalidate>
+                        <!-- Campo trampa contra spam: oculto para las personas -->
+                        <div class="hidden" aria-hidden="true">
+                            <label for="sitio">No completar</label>
+                            <input type="text" id="sitio" tabindex="-1" autocomplete="off">
+                        </div>
                         <div class="mb-5">
                             <label for="name" class="block text-sm font-medium text-white/80 mb-1">Nombre completo</label>
                             <input type="text" id="name" class="w-full px-4 py-3 bg-white/5 border border-white/30 rounded-lg focus:ring-2 focus:ring-white/60 focus:border-transparent outline-none transition text-white placeholder-white/40" placeholder="Tu nombre" required>
@@ -601,15 +606,13 @@
                             <label for="message" class="block text-sm font-medium text-white/80 mb-1">Mensaje</label>
                             <textarea id="message" rows="4" class="w-full px-4 py-3 bg-white/5 border border-white/30 rounded-lg focus:ring-2 focus:ring-white/60 focus:border-transparent outline-none transition text-white placeholder-white/40 resize-none" placeholder="Contanos brevemente sobre tu proyecto..." required></textarea>
                         </div>
-                        <button type="submit" class="w-full bg-white hover:bg-secondaryLight text-black font-semibold py-4 rounded-lg transition-colors duration-300 uppercase tracking-widest text-sm">
+                        <button type="submit" id="form-boton" class="w-full bg-white hover:bg-secondaryLight text-black font-semibold py-4 rounded-lg transition-colors duration-300 uppercase tracking-widest text-sm disabled:opacity-60 disabled:cursor-wait">
                             Enviar Mensaje
                         </button>
                     </form>
-                    
-                    <!-- Message Box (Hidden by default) -->
-                    <div id="form-message" class="hidden mt-4 p-4 glass text-white rounded-lg text-center text-sm font-medium">
-                        ¡Gracias por tu mensaje! Nos pondremos en contacto a la brevedad.
-                    </div>
+
+                    <!-- Resultado del envío -->
+                    <div id="form-message" role="status" aria-live="polite" class="hidden mt-4 p-4 glass text-white rounded-lg text-center text-sm font-medium"></div>
                 </div>
             </div>
         </div>
@@ -668,18 +671,50 @@
             if (location.hash === `#${id}`) mostrar();
         });
 
-        // Mensaje simulado en lugar de alert()
-        function showMessage() {
-            const formMsg = document.getElementById('form-message');
+        // Envío del formulario de contacto a /api/contacto (función de Vercel que manda el mail)
+        const formContacto = document.getElementById('form-contacto');
+        const formBoton = document.getElementById('form-boton');
+        const formMsg = document.getElementById('form-message');
+
+        function mostrarResultado(texto, esError) {
+            formMsg.textContent = texto;
+            formMsg.classList.toggle('border-red-400', esError);
             formMsg.classList.remove('hidden');
-            setTimeout(() => {
-                formMsg.classList.add('hidden');
-            }, 4000);
-            
-            // Limpiar formulario opcionalmente
-            const form = document.querySelector('form');
-            if(form) form.reset();
         }
+
+        formContacto.addEventListener('submit', async e => {
+            e.preventDefault();
+            if (!formContacto.reportValidity()) return;
+
+            formBoton.disabled = true;
+            formBoton.textContent = 'Enviando...';
+            formMsg.classList.add('hidden');
+
+            try {
+                const respuesta = await fetch('/api/contacto', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        nombre: document.getElementById('name').value,
+                        email: document.getElementById('email').value,
+                        servicio: document.getElementById('service').value,
+                        mensaje: document.getElementById('message').value,
+                        sitio: document.getElementById('sitio').value
+                    })
+                });
+                const datos = await respuesta.json().catch(() => ({}));
+                if (!respuesta.ok) throw new Error(datos.error || 'No pudimos enviar tu mensaje. Probá de nuevo en unos minutos.');
+
+                formContacto.reset();
+                mostrarResultado('¡Gracias por tu mensaje! Nos pondremos en contacto a la brevedad.', false);
+            } catch (error) {
+                const texto = error instanceof TypeError ? 'No pudimos conectarnos. Revisá tu conexión e intentá de nuevo.' : error.message;
+                mostrarResultado(texto, true);
+            } finally {
+                formBoton.disabled = false;
+                formBoton.textContent = 'Enviar Mensaje';
+            }
+        });
 
         // Etapas del proceso. Para cambiar un texto, editalo acá.
         // Cada imagen está en img/proceso/; si una etapa no tiene, poné imagen: null.
